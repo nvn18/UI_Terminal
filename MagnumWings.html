@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MAGNUMWINGS</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="icon" type="image/x-icon" href="Logo.png">
+    </head>
+
+    <body>
+        <header>
+            <img src="MagnumWingsLogo.png" alt="logo">
+        </header>
+        
+        <!-- Section 1: Image Section -->
+        <section class="img-section" style="background-image: url('front_view.PNG');">
+            <div class="message-box">
+                "Revolutionizing Aerial mobility with electric Vertical Take-Off and Landing (eVTOL)
+                technology—where efficiency meets innovation."
+            </div>
+        </section>
+
+        <!-- Section 2: Image Section with Detail Boxes -->
+        <section class="img-section" style="background-image: url('left_half_view.PNG');">
+            <div class="detail-container">
+                <div class="detail-box">
+                    <img src="passengers.png" alt="passengerslogo">
+                    <strong>Pilot - 01</strong>
+                    <strong>Riders - 02</strong>
+                </div>
+                <div class="detail-box">
+                    <img src="speed.png" alt="speedlogo"> <br>
+                    <strong>Speed - 400kmph</strong>
+                </div>
+                <div class="detail-box">
+                    <img src="distance.png" alt="distancelogo"> <br>
+                    <strong>Distance- 300km (Battery) | 1500km (Hybrid)</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Image Section -->
+        <section class="img-section company-section" style="background-image:url('right_zoom_half.PNG');">
+            <div class="company-details">
+                <h2>About</h2>
+                <p><b>"We are proud to lead India's aviation revolution, pioneering advanced eVTOL technology to dazzle the urban skies with sustainability. As the first to redefine connectivity through eco-friendly flight solutions, we are setting the standard for efficient, modern and environmentally conscious air mobility."</b></p>
+            </div>
+        </section>
+
+        <!-- Section 4: Video Section with Overlay -->
+        <section class="video-section">
+            <div class="video-overlay">
+                <div class="time-box">
+                    <img src="fli.png" alt="Logo">
+                    <span>9 min</span>
+                    <span class="hover-text">21km | 13min</span>
+                </div>
+                <div class="time-box">
+                    <img src="train.png" alt="Logo">
+                    <span>62 min</span>
+                    <span class="hover-text">21km | 17min</span>
+                </div>
+                <div class="time-box">
+                    <img src="car.png" alt="Logo">
+                    <span>52 min</span>
+                    <span class="hover-text">21km | 14min</span>
+                </div>
+            </div>
+            <video src="Travel_Video_Temp.mp4" autoplay playsinline muted loop></video>
+        </section>
+
+        <!-- Section 5: Full Page Slideshow Section with Navigation Dots -->
+        <section>
+            <div class="slideshow">
+                <div class="slide active" style="background-image: url('right_half_view.PNG');">
+                    <div class="message-box slides" id="slide1">
+                        "Innovation in Flight, Revolution on Ground."
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('right_zoom_half.PNG');">
+                    <div class="message-box slides" id="slide2">
+                        "India's Leap into the Future of Aviation."
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('left_side_view.PNG');">
+                    <div class="message-box slides" id="slide3">
+                        "Bringing skies closer."
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('complete_left_side.PNG');">
+                    <div class="message-box slides" id="slide4">
+                        "Making travel easy and faster."
+                    </div>
+                </div>
+                <div class="nav-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Plane Quotation Section -->
+        <section class="img-section" style="background-image: url('back_half_view.PNG');">
+            <div class="message-box" id="msg2">
+                "Empowering India's skies with sustainable and cutting-edge eVTOL solutions for a smarter and greener future."
+            </div>
+        </section>
+
+        <!-- Section 7: CEO Section with Message -->
+        <section class="img-section ceo-section" style="background-image:url('back_view.PNG');">
+            <div class="ceo-container">
+                <img class="ceo-image" src="ceo_image.jpg" alt="CEO Image">
+            </div>
+            <div class="ceo-message">
+                <p>"Our game-changing eVTOL service is not just a development but a bold step towards
+                    transforming aviation, enabling seamless, efficient, and emission-free mobility.
+                    By leveraging smaller, advanced aircraft, we are setting new benchmarks and competing globally." 
+                </p>
+                <p id="name">- Abhiram Chava (CEO)</p>
+            </div>
+        </section>
+
+        <!-- Section 8: Footer -->  
+        <footer id="contact" class="footer-section">
+            <div class="footer-container">
+                <div class="footer-box">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/183P19Gf6f/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                        <a href="https://x.com/magnumwings" target="_blank"><i class="fab fa-twitter-square"></i></a>
+                        <a href="https://www.instagram.com/magnumwings_official" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/magnumwings-llp/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.youtube.com/@naats_aviation" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-box">
+                    <h3>Contact Details</h3>
+                    <div class="contact-details">
+                        <p><strong>Address:</strong> Guntur, Andhra Pradesh, India</p>
+                        <p><strong>Phone:</strong> +91 9333223344</p>
+                        <p><strong>Email:</strong> info@magnumwings.com</p>
+                    </div>
+                </div>
+                <div class="footer-box newsletter">
+                    <h3>Newsletter</h3>
+                    <form id="newsletter-form">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" placeholder="Your Message" rows="3" required></textarea>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <p id="copyrights">© 2025 MAGNUMWINGS. All Rights Reserved.</p>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>

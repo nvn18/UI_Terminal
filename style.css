@@ -1,0 +1,646 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 59px;
+    background: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: background 0.5s ease;
+    z-index: 1;
+}
+
+img {
+    width: 330px;
+}
+
+img, video {
+    pointer-events: none;
+}
+
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #000;
+    background: #000;
+    overflow-x: hidden;
+    scrollbar-gutter: stable both-edges;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*--------------------------------------------------------------
+  Section Base Styles & Continuous Floating Animation
+--------------------------------------------------------------*/
+section {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 1; /* Always visible */
+    
+    /* Continuous subtle floating for background sections */
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Animation for when the detail-box comes into view */
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(80%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+section .detail-box.in-view {
+    animation: moveInRight 1s ease-out forwards;
+}
+
+/* Animation for when the detail-box goes out of view */
+@keyframes moveOutRight {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(80%);
+    }
+}
+
+section .detail-box.out-of-view {
+    animation: moveOutRight 1s ease-in forwards;
+}
+
+/* Floating keyframe for sections */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/*--------------------------------------------------------------
+  Keyframe Animations
+--------------------------------------------------------------*/
+/* Entrance animations (run once on load) */
+@keyframes moveInBottom {
+    0% {
+        opacity: 0.5;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Continuous pulse effect for message boxes and text */
+@keyframes pulseEffect {
+    0%   { transform: scale(0.8); }
+    50%  { transform: scale(1); }
+    100% { transform: scale(0.8); }
+}
+
+/* Pop effect for detail boxes */
+@keyframes popEffect {
+    0%   { transform: scale(0.6); }
+    50%  { transform: scale(1); }
+    100% { transform: scale(0.6); }
+}
+
+/* Text pulse effect for company details */
+@keyframes textPulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Continuous floating for the CEO image */
+@keyframes ceoFloat {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes slideInFromLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/*--------------------------------------------------------------
+  Message Box (used in several sections)
+--------------------------------------------------------------*/
+.message-box {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    margin-right: 20px;
+    color: #000;
+    padding: 20px;
+    border-radius: 25px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    z-index: 1;
+    /* Entrance animation then a continuous pulse */
+    animation: moveInBottom 1s ease-out forwards, pulseEffect 3s ease-in-out infinite;
+}
+
+#msg2 {
+    left: 20%;
+    bottom: 30%;
+}
+
+.message-box::after {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: #fff;
+    transition: all 0.4s;
+}
+
+/*--------------------------------------------------------------
+  Detail Boxes – with continuous pop effect
+--------------------------------------------------------------*/
+.detail-container {
+    position: absolute;
+    bottom: 1%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 1300px;
+    z-index: 1;
+}
+
+.detail-box {
+    position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 20px;
+    border-radius: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Initial animations */
+    animation: fadeIn 3s ease-out, slideInFromLeft 3s ease-out, moveInRight 1s ease-out forwards;
+}
+
+.detail-box:nth-child(1) { animation-delay: 0.3s; }
+.detail-box:nth-child(2) { animation-delay: 0.5s; }
+.detail-box:nth-child(3) { animation-delay: 0.7s; }
+
+.detail-box img {
+    width: 40px;
+}
+
+.detail-box::after {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.4s;
+}
+
+/*--------------------------------------------------------------
+  Company Details Section
+--------------------------------------------------------------*/
+.company-details {
+    background: rgba(1, 1, 1, 0.1);
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    transform: translateY(20px);
+    /* Entrance then continuous text pulse */
+    animation: moveInBottom 1s ease-out forwards, textPulse 2s ease-in-out infinite;
+}
+
+.company-details h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: rgb(255, 255, 255);
+    animation: textPulse 2s ease-in-out infinite;
+}
+
+.company-details p {
+    font-size: 20px;
+    line-height: 1.8;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    animation: textPulse 2s ease-in-out infinite;
+}
+
+/*--------------------------------------------------------------
+  Video Section & Overlay
+--------------------------------------------------------------*/
+.video-section {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    min-height: 100vh;
+    position: relative;
+}
+
+.video-section video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 2;
+    /* Entrance animation (no continuous loop) */
+    animation: moveInLeft 1s ease-out forwards;
+}
+
+.video-overlay .time-box {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-overlay .time-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.video-overlay .time-box img {
+    width: 30px;
+    height: 30px;
+}
+
+.video-overlay .time-box .hover-text {
+    opacity: 0;
+    font-size: 16px;
+    color: #000;
+    transition: opacity 0.3s ease;
+}
+
+.video-overlay .time-box:hover .hover-text {
+    opacity: 1;
+}
+
+/*--------------------------------------------------------------
+  Slideshow Section
+--------------------------------------------------------------*/
+.slideshow {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slides {
+    margin-left: 20px;
+}
+
+#slide1, 
+#slide2, 
+#slide3, 
+#slide4 {
+    left: 0%;
+}
+
+/* Navigation dots */
+.nav-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 2;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/*--------------------------------------------------------------
+  CEO Section – Circular Image & Floating Message
+--------------------------------------------------------------*/
+section.ceo-section {
+    flex-direction: column;
+}
+
+.ceo-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.ceo-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    margin-right: 1000px;
+    margin-bottom: 200px;
+    /* Continuous floating animation for the CEO image */
+    animation: ceoFloat 4s ease-in-out infinite;
+}
+
+.ceo-message {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 20px;
+    max-width: 1000px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* Continuous pulse for the message */
+    animation: pulseEffect 3s ease-in-out infinite;
+}
+
+.ceo-message #name {
+    position: relative;
+    left: 60%;
+}
+
+/*--------------------------------------------------------------
+  Footer
+--------------------------------------------------------------*/
+footer {
+    background: #222;
+    color: #eee;
+    padding-top: 40px;
+    /* Continuous floating effect for the footer */
+    animation: float 6s ease-in-out infinite;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.footer-box {
+    flex: 1;
+    min-width: 250px;
+    margin: 20px;
+    background: #333;
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.footer-box:hover {
+    transform: scale(1.05);
+}
+
+.footer-box h3 {
+    margin-bottom: 15px;
+    animation: textPulse 2s ease-in-out infinite;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.social-icons {
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.social-icons a {
+    margin-right: 10px;
+    font-size: 1.5rem;
+    color: #eee;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #1e90ff;
+}
+
+.contact-details p {
+    margin: 5px 0;
+}
+
+.newsletter form {
+    display: flex;
+    flex-direction: column;
+}
+
+.newsletter input,
+.newsletter textarea,
+.newsletter button {
+    margin: 5px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.newsletter button {
+    background: #1e90ff;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.newsletter button:hover {
+    background: #0066cc;
+}
+
+#copyrights {
+    text-align: center;
+    padding: 10px 0;
+    background: #000;
+}
+
+/*--------------------------------------------------------------
+  Responsive Styles
+--------------------------------------------------------------*/
+/* Adjust detail container layout for smaller screens */
+@media (max-width: 1300px) {
+    .ceo-image {
+        margin-right: 300px;
+    }
+    .detail-container {
+        width: 900px;
+    }
+}
+
+@media (max-width: 900px) {
+    .detail-container {
+        width: auto;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .detail-box {
+        font-size: 10px;
+        width: 70%;
+        background: rgba(255, 255, 255, 0.3);
+    }
+    .detail-box::after {
+        background-color: rgb(255, 255, 255, 0.3);
+    }
+    #slide1, 
+    #slide2, 
+    #slide3, 
+    #slide4 {
+        bottom: 10%;
+        background-color: rgb(255, 255, 255, 0.3);
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .video-section video {
+        height: 50vh;
+    }
+    .ceo-container {
+        flex-direction: column;
+    }
+    .ceo-image {
+        width: 200px;
+        height: 200px;
+        margin-right: auto;
+    }
+    .ceo-message #name {
+        left: 0%;
+    }
+    .company-details h2 {
+        font-size: 28px;
+    }
+    .company-details p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 640px) {
+    .message-box {
+        left: 0%;
+        margin: 0;
+    }
+    #msg2 {
+        bottom: 10%;
+    }
+}
+
+@media (max-width: 500px) {
+    .ceo-image {
+        margin-right: 0;
+    }
+}
+  
+/*--------------------------------------------------------------
+  Scrollbar Styles
+--------------------------------------------------------------*/
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 5px;
+}
